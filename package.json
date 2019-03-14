@@ -5,15 +5,22 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "build": "webpack --watch",
     "server": "nodemon app.js"
   },
   "author": "Hongyang gao",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "d3": "^5.9.1",
     "express": "^4.16.4",
-    "mongoose": "^5.4.19"
+    "mongoose": "^5.4.19",
+    "node-fetch": "^2.3.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
