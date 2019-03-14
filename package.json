@@ -4,9 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "webpack --watch",
-    "server": "nodemon app.js"
+    "start": "webpack --watch --mode=development",
+    "server": "nodemon ./backend/app.js"
   },
   "author": "Hongyang gao",
   "license": "ISC",
