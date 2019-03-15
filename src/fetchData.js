@@ -12,7 +12,7 @@ import * as API from './api_util';
     //  let data2 = await API.getTopAnime(2).then(res => {
     //      //   a = res.data;
     //      return res.data
-    //  })
+    //  });
     
     return data.concat(data1);
     // return data.concat(data1, data2);
