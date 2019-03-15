@@ -1,24 +1,20 @@
-import fetchData from './fetchData'
+import fetchData from './fetchData';
 import * as API from './api_util';
+import {render} from './testscript';
 
 console.log('working');
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // const dataset = fetchData()
 
+    const dataset = await fetchData();
 
-    let dataset = await fetchData();
+    // console.log(dataset);
 
+    // let data = [[5, 20, 30], [480, 90, 20]]
+    render(dataset);
+   
 
-    console.log(dataset);
-
-
-    // API.getTopAnime(1);
-    // let dataset = [
-    //     [1,2],
-    //     [45,6],
-    //     [6,90]
-    // ]
+ 
 
     // const w = 500;
     // const h = 500;
