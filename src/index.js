@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const dataset = await fetchData();
 
-    console.log(dataset);
+    // console.log(dataset);
 
     // let data = [[5, 20, 30], [480, 90, 20]]
     // render(dataset);

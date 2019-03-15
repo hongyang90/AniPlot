@@ -1,10 +1,12 @@
 import {select, scaleLinear, extent, axisBottom, axisLeft, format} from 'd3';
 import d3Tip from 'd3-tip';
+// import {tip} from './tiptool';
+
 
 export const render2 = (dataset) => {
     const svg = select('svg')
         .attr('color', 'black')
-        .attr('background', 'mintcream')
+        .attr('background', 'mintcream');
 
     const width = 1200;
     const height = 800;
@@ -71,13 +73,18 @@ export const render2 = (dataset) => {
         .range([15, 50]);
 
 
+        
+
     const tip = d3Tip()
         .attr('class', 'tiptool')
-        .offset([-10, 0])
+        .offset([-30, 0])
         .html( d => {
-            return "<div class='title'>"+`${d.title}`+"</div>";
+            return "<div class='title'>"+`${d.title}`+`</div><div class='image'><img src=${d.image_url}></div>`  ;
             
         })
+
+
+
 
     g.selectAll('circle')
         .data(dataset)
@@ -89,15 +96,28 @@ export const render2 = (dataset) => {
         .attr("fill", () => {
             return "hsl(" + Math.random() * 360 + ",100%,40%)";
         }).attr("opacity", 0.6)
-        .on('mouseover', function (d) {
-            select(this).style('opacity', 1);
-            tip.show(d, this)
+        .on('mouseenter',function (d) {
+            d3.selectAll('circle').style('opacity', 0.25);
+            let mynode = d3.select(this);
+            mynode.style('opacity', 1);
+            mynode.transition().duration(200).delay(100).attr('r', 150);
+            tip.show(d,this)
         })
-        .on('mouseout', function (d) {
-            select(this).style('opacity', 0.6)
-            tip.hide();
+        .on('mouseleave', function (d) {
+            d3.select(this).transition().duration(200).delay(0).attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) });
+            d3.selectAll("circle").style('opacity', 0.6);
+            tip.hide()
         })
-        .call(tip);
+        .call(tip)
+        // .on('mouseover', function (d) {
+        //     // select(this).style('opacity', 1);
+        //     tip.show(d, this)
+        // })
+        // .on('mouseout', function (d) {
+        //     // select(this).style('opacity', 0.6)
+        //     tip.hide();
+        // })
+        // .call(tip);
  
 
 };
