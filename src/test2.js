@@ -1,4 +1,5 @@
 import {select, scaleLinear, extent, axisBottom, axisLeft, format} from 'd3';
+import d3Tip from 'd3-tip';
 
 export const render2 = (dataset) => {
     const svg = select('svg')
@@ -66,19 +67,37 @@ export const render2 = (dataset) => {
         .text(xAxisLabel);
 
     const rScale = scaleLinear()
-        .domain(extent(dataset, function (d) { return (((d.score - 7) / 9.5) * 35 + (1 / d.rank) * 15); }))
+        .domain(extent(dataset, function (d) { return (((d.score - 7) / 9.5) * 50) }))
         .range([15, 50]);
+
+
+    const tip = d3Tip()
+        .attr('class', 'tiptool')
+        .offset([-10, 0])
+        .html( d => {
+            return "<div class='title'>"+`${d.title}`+"</div>";
+            
+        })
 
     g.selectAll('circle')
         .data(dataset)
         .enter().append('circle')
         .attr('cy', d => yScale(yValue(d)))
         .attr('cx', d => xScale(xValue(d)))
-        .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 25 + (1 / d.rank) * 25))})
+        .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50))})
         // .attr('r', d => { return 3*(((d.score - 7)/9.5)*25 + (1/d.rank)*25)})
         .attr("fill", () => {
             return "hsl(" + Math.random() * 360 + ",100%,40%)";
-        }).attr("opacity", 0.6);
+        }).attr("opacity", 0.6)
+        .on('mouseover', function (d) {
+            select(this).style('opacity', 1);
+            tip.show(d, this)
+        })
+        .on('mouseout', function (d) {
+            select(this).style('opacity', 0.6)
+            tip.hide();
+        })
+        .call(tip);
  
 
 };
