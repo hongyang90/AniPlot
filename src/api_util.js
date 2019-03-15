@@ -1,8 +1,8 @@
 const axios = require('axios');
 
-export const getTopAnime = (num) => (
+export const getTopAnime = (id) => (
     axios({
-        url: `/backend/top/${num}`,
+        url: `/top/${id}`,
         method: 'get'
     })
 );
