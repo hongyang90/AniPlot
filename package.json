@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "webpack --watch --mode=development",
+    "frontend": "webpack --watch --mode=development",
+    "start": "node ./backend/app.js",
     "server": "nodemon ./backend/app.js",
     "heroku-postbuild": "webpack"
   },
