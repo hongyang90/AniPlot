@@ -79,7 +79,7 @@ export const render2 = (dataset) => {
         .attr('class', 'tiptool')
         .offset([0, 0])
         .html( d => {
-            return "<div class='content'><div class='tiptitle'>"+`${d.title}`+`</div><div class='image'><img src=${d.image_url}></div></div>`  ;
+            return "<div class='content'><div class='tiptitle'>"+`${d.title}`+`</div><div class='image'><img src=${d.image_url}></div></div><div class='arrow'></div>`  ;
             
         })
 
@@ -91,26 +91,52 @@ export const render2 = (dataset) => {
         .enter().append('circle')
         .attr('cy', d => yScale(yValue(d)))
         .attr('cx', d => xScale(xValue(d)))
-        .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50))})
+        .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) })
         // .attr('r', d => { return 3*(((d.score - 7)/9.5)*25 + (1/d.rank)*25)})
         .attr("fill", () => {
             return "hsl(" + Math.random() * 360 + ",100%,40%)";
         }).attr("opacity", 0.6)
-        .on('mouseenter',function (d) {
-            d3.selectAll('circle').style('opacity', 0.25);
-            let mynode = d3.select(this);
-            mynode.style('opacity', 1);
-            mynode.transition().duration(200).delay(100).attr('r', 125);
-            mynode.append('text')
-                .text(`${d.title}`)
-            tip.show(d,this)
+        .on('mouseover', function (d) {
+            d3.selectAll('circle').style('opacity', 0.25)
+            select(this).style('opacity', 1);
+            tip.show(d, this);
         })
-        .on('mouseleave', function (d) {
-            d3.select(this).transition().duration(200).delay(0).attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) });
-            d3.selectAll("circle").style('opacity', 0.6);
-            tip.hide()
+        .on('mouseout', function (d) {
+            select(this).style('opacity', 0.6);
+            d3.selectAll('circle').style('opacity', 0.6)
+            tip.hide();
         })
-        .call(tip)
+        .call(tip);
+
+
+
+        // TESTING CODE
+
+    // g.selectAll('circle')
+    //     .data(dataset)
+    //     .enter().append('circle')
+    //     .attr('cy', d => yScale(yValue(d)))
+    //     .attr('cx', d => xScale(xValue(d)))
+    //     .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50))})
+    //     // .attr('r', d => { return 3*(((d.score - 7)/9.5)*25 + (1/d.rank)*25)})
+    //     .attr("fill", () => {
+    //         return "hsl(" + Math.random() * 360 + ",100%,40%)";
+    //     }).attr("opacity", 0.6)
+    //     .on('mouseenter',function (d) {
+    //         d3.selectAll('circle').style('opacity', 0.25);
+    //         let mynode = d3.select(this);
+    //         mynode.style('opacity', 1);
+    //         mynode.transition().duration(200).delay(100).attr('r', 125);
+    //         mynode.append('text')
+    //             .text(`${d.title}`)
+    //         tip.show(d,this)
+    //     })
+    //     .on('mouseleave', function (d) {
+    //         d3.select(this).transition().duration(200).delay(0).attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) });
+    //         d3.selectAll("circle").style('opacity', 0.6);
+    //         tip.hide()
+    //     })
+    //     .call(tip)
         // .on('mouseover', function (d) {
         //     select(this).style('opacity', 1);
         //     tip.show(d, this)
