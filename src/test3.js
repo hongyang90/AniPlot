@@ -1,4 +1,4 @@
-import {select, scaleLinear, extent, axisBottom, axisLeft, format} from 'd3';
+import { select, scaleLinear, extent, axisBottom, axisLeft, format } from 'd3';
 import d3Tip from 'd3-tip';
 // import {tip} from './tiptool';
 
@@ -18,12 +18,12 @@ export const render2 = (dataset) => {
     const circleRadius = 50;
     const yAxisLabel = 'Anime Overall Rating';
 
-    const margin = {top: 75, right:150, bottom: 75, left: 100};
+    const margin = { top: 75, right: 150, bottom: 75, left: 100 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
     const xScale = scaleLinear()
-        .domain([0, d3.max(dataset, function (d) { return d.rank; }) ])
+        .domain([0, d3.max(dataset, function (d) { return d.rank; })])
         .range([0, innerWidth])
         .nice();
 
@@ -31,17 +31,17 @@ export const render2 = (dataset) => {
         .domain(extent(dataset, yValue))
         .range([innerHeight, 0])
         .nice();
-    
+
     const g = svg.append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
     const xAxis = axisBottom(xScale)
-        // .tickSize(-innerHeight)
-        // .tickPadding(15);
+    // .tickSize(-innerHeight)
+    // .tickPadding(15);
 
     const yAxis = axisLeft(yScale)
-        // .tickSize(-innerWidth)
-        // .tickPadding(10);
+    // .tickSize(-innerWidth)
+    // .tickPadding(10);
 
     const yAxisG = g.append('g').call(yAxis);
 
@@ -73,14 +73,14 @@ export const render2 = (dataset) => {
         .range([15, 50]);
 
 
-        
+
 
     const tip = d3Tip()
         .attr('class', 'tiptool')
         .offset([0, 0])
-        .html( d => {
-            return "<div class='content'><div class='tiptitle'>"+`${d.title}`+`</div><div class='image'><img src=${d.image_url}></div></div>`  ;
-            
+        .html(d => {
+            return "<div class='content'><div class='tiptitle'>" + `${d.title}` + `</div><div class='image'><img src=${d.image_url}></div></div>`;
+
         })
 
 
@@ -91,19 +91,19 @@ export const render2 = (dataset) => {
         .enter().append('circle')
         .attr('cy', d => yScale(yValue(d)))
         .attr('cx', d => xScale(xValue(d)))
-        .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50))})
+        .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) })
         // .attr('r', d => { return 3*(((d.score - 7)/9.5)*25 + (1/d.rank)*25)})
         .attr("fill", () => {
             return "hsl(" + Math.random() * 360 + ",100%,40%)";
         }).attr("opacity", 0.6)
-        .on('mouseenter',function (d) {
+        .on('mouseenter', function (d) {
             d3.selectAll('circle').style('opacity', 0.25);
             let mynode = d3.select(this);
             mynode.style('opacity', 1);
             mynode.transition().duration(200).delay(100).attr('r', 125);
             mynode.append('text')
                 .text(`${d.title}`)
-            tip.show(d,this)
+            tip.show(d, this)
         })
         .on('mouseleave', function (d) {
             d3.select(this).transition().duration(200).delay(0).attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) });
@@ -111,16 +111,15 @@ export const render2 = (dataset) => {
             tip.hide()
         })
         .call(tip)
-        // .on('mouseover', function (d) {
-        //     select(this).style('opacity', 1);
-        //     tip.show(d, this)
-        // })
-        // .on('mouseout', function (d) {
-        //     select(this).style('opacity', 0.6)
-        //     tip.hide();
-        // })
-        // .call(tip);
- 
+    // .on('mouseover', function (d) {
+    //     select(this).style('opacity', 1);
+    //     tip.show(d, this)
+    // })
+    // .on('mouseout', function (d) {
+    //     select(this).style('opacity', 0.6)
+    //     tip.hide();
+    // })
+    // .call(tip);
+
 
 };
-

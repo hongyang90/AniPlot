@@ -5,6 +5,15 @@ const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 5000;
 
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static('dist'));
+//     app.get('/', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+//     })
+// }
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'))});
+
 app.use(express.static('dist'));
 
 app.use(bodyParser.urlencoded({  //allows our app to respond to other software like postman
@@ -13,7 +22,6 @@ app.use(bodyParser.urlencoded({  //allows our app to respond to other software l
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => res.sendFile(path.join(__dirname, './dist/index.html')));
 
 app.get('/top/:page', (req, response) => {
     fetch(`https://api.jikan.moe/v3/top/anime/${req.params.page}/bypopularity`)
@@ -21,7 +29,7 @@ app.get('/top/:page', (req, response) => {
             return response.text();
         }).then((body) => {
             let results = JSON.parse(body);
-            console.log(results.top);
+            // console.log(results.top);
             response.send(results.top);
         });
 });
@@ -32,7 +40,7 @@ app.get('/anime/:id', (req, response) => {
             return response.text();
         }).then((body) => {
             let results = JSON.parse(body);
-            console.log(results);
+            // console.log(results);
             response.send(results);
         });
 });

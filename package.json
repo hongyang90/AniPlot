@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "webpack --watch --mode=development",
-    "server": "nodemon ./backend/app.js"
+    "server": "nodemon ./backend/app.js",
+    "heroku-postbuild": "webpack"
   },
   "author": "Hongyang gao",
   "license": "ISC",
