@@ -184,8 +184,7 @@ circle {
 
 .infotitle {
     color: black;
-    display: flex;
-    justify-content: flex-start;
+    display: block;
     margin: 5px;
     font-size: 26px;
     max-width: 350px;

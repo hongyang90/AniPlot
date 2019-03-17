@@ -116,7 +116,7 @@ export const render2 = (dataset) => {
         
       `).style("background", () => {
           return "hsl(" + Math.random() * 360 + ",100%,45%)";
-      });
+      }).transition().duration(200).delay(2)
         
     };
 
