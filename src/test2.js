@@ -7,11 +7,11 @@ export const render2 = (dataset) => {
     const svg = select('svg')
       
 
-    const width = 1200;
+    const width = 1300;
     const height = 800;
 
     const xValue = d => d.rank;
-    const xAxisLabel = 'Anime Popularity By Rank';
+    const xAxisLabel = 'Anime Popularity By Rank (1-100)';
 
     const yValue = d => d.score;
     const circleRadius = 50;
@@ -72,7 +72,14 @@ export const render2 = (dataset) => {
         .range([15, 50]);
 
 
-        
+    // const legend = svg.append('g')
+    //     .attr('class', 'legend')
+    //     .attr('transform', 'translate(50,30')
+    //     .call(d3.legend)
+
+
+
+
 
     const tip = d3Tip()
         .attr('class', 'tiptool')
@@ -137,28 +144,13 @@ export const render2 = (dataset) => {
             tip.show(d, this);
         })
         .on('mouseout', function (d) {
-            select(this).style('opacity', 0.6);
-            d3.selectAll('circle').style('opacity', 0.6);
+            select(this).style('opacity', 0.5);
+            d3.selectAll('circle').style('opacity', 0.5);
             tip.hide();
         })
         .on("click", handleClick)
         .call(tip);
 
-
-
-    // select('body')
-    //     .on('click', (e) => {
-    //         console.log(e)
-    //         if (e.target === 'circle') {
-    //             d3.selectAll('circle')
-    //                 .style('visibility', 'hidden')
-
-    //         } else {
-    //             d3.selectAll('circle')
-    //                 .style('visibility', 'visible');
-    //             select('.info').remove()
-    //         }
-    //     })
 
     document.addEventListener('click', (e) => {
         if (!e.target.classList.contains('node')) {

@@ -39,7 +39,7 @@ input[type="submit"] {
 }
 
 body {
-    background: lightblue;
+    background: #4671D5;
 }
 
 svg {
@@ -58,11 +58,13 @@ svg {
     flex-direction: column;
     align-items: center;
     height: 165px;
+    color: white;
 }
 
 .titlesub {
-    font-size: 50px;
+    font-size: 55px;
     letter-spacing: 3px;
+    margin: 5px;
 }
 
 .title p {
@@ -78,14 +80,14 @@ svg text {
 }
 
  i {
-    color: blue;
+    color: black;
     font-size: 50px;
     margin: 5px;
     
 }
 
 i:hover {
-color: black;
+color: #FFAA00;
 }
 
 circle {
@@ -94,8 +96,8 @@ circle {
 
 .content {
     position: relative;
-	background: #4d76d5;
-	border: 3px solid #c2e1f5;
+	background: #FFAA00;
+	border: 3px solid rgb(116, 144, 211);
     line-height: 1;
     color: #fff;
     padding: 12px;
@@ -137,13 +139,13 @@ circle {
 
 .content:after {
 	border-color: rgba(77, 118, 213, 0);
-	border-top-color: #4d76d5;
+	border-top-color: #FFAA00;
 	border-width: 15px;
 	margin-left: -15px;
 }
 .content:before {
 	border-color: rgba(194, 225, 245, 0);
-	border-top-color: white;
+	border-top-color: rgb(116, 144, 211);
 	border-width: 19px;
 	margin-left: -19px;
 }
@@ -167,15 +169,7 @@ circle {
     font-size: 16px;
     text-decoration: underline;
 }
-/* .modal {
-  position: absolute;
-  left: 50px;
-  background: black;
-    height: 100px;
-    width: 100px;
-  display: flex;
-  z-index: 10;
-} */
+
 .info img {
     height: 294px;
     width: 200px;
@@ -211,4 +205,13 @@ circle {
 
 .infoscore {
     margin: 5px;
+}
+
+.legend {
+    position: absolute;
+    top: 16%;
+    left: 70%;
+    width: 10%;
+    font-size: 14px;
+    
 }

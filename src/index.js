@@ -2,7 +2,6 @@ import fetchData from './fetchData';
 import * as API from './api_util';
 import {render} from './testscript';
 import {render2} from './test2';
-import {render3} from './test3';
 
 console.log('working');
 
