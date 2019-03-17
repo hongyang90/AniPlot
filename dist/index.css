@@ -149,13 +149,26 @@ circle {
 }
 
 .info {
-    background: black;
-    height: 100px;
-    width: 100px;
+    background: lightgreen;
+    height: 600px;
+    width: 600px;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+
 }
 
-.modal {
+.info a {
+    color: blue;
+    font-size: 16px;
+    text-decoration: underline;
+}
+/* .modal {
   position: absolute;
   left: 50px;
   background: black;
@@ -163,4 +176,36 @@ circle {
     width: 100px;
   display: flex;
   z-index: 10;
+} */
+.infoimg {
+    height: 294px;
+    width: 200px;
+    margin-top: -40px;
+}
+
+.infotitle {
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px;
+    font-size: 26px;
+    max-width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.firstsub {
+    display: flex;
+    justify-content: center;
+    width: 225px;
+
+}
+
+.type, .episodes {
+    text-align: center;
+}
+
+.secondsub {
+
 }

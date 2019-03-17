@@ -86,7 +86,40 @@ export const render2 = (dataset) => {
 
     const handleClick = (d) => {
         tip.hide();
-       
+        d3.selectAll('circle')
+            .style('visibility', 'hidden');
+            
+       select('.main')
+        .append('div')
+        .attr('class', 'info')
+        .style('display', 'flex')
+           .html(`<div class="infoimg"><img src=${d.image_url} alt=""></div>
+            <div class='infotitle'>${d.title}</div>
+            <div class="firstsub">
+                <div class="type">
+                    Anime Type: ${d.type}
+                </div>
+                <div class="episodes">
+                Episodes: ${d.episodes}
+                </div>
+            </div>
+            <div class="inforank">Popularity Rank: ${d.rank}</div>
+            <div class="infoscore">Rating: ${d.score}</div>
+            <div class="secondsub">
+                <div class="startdate">
+                    Start Date: ${d.start_date}
+                </div>
+                <div class="enddate">
+                End Date:  ${d.end_date}
+                </div>
+            </div>
+            <a href=${d.url}>More About This Show</a>
+
+        
+      `).style("background", () => {
+          return "hsl(" + Math.random() * 360 + ",100%,40%)";
+      })
+        
     }
 
     g.selectAll('circle')
