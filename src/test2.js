@@ -5,8 +5,7 @@ import d3Tip from 'd3-tip';
 
 export const render2 = (dataset) => {
     const svg = select('svg')
-        .attr('color', 'black')
-        .attr('background', 'mintcream');
+      
 
     const width = 1200;
     const height = 800;
@@ -81,10 +80,14 @@ export const render2 = (dataset) => {
         .html( d => {
             return "<div class='content'><div class='tiptitle'>"+`${d.title}`+`</div><div class='image'><img src=${d.image_url}></div></div><div class='arrow'></div>`  ;
             
-        })
+        });
 
 
 
+    const handleClick = (d) => {
+        tip.hide();
+       
+    }
 
     g.selectAll('circle')
         .data(dataset)
@@ -106,6 +109,7 @@ export const render2 = (dataset) => {
             d3.selectAll('circle').style('opacity', 0.6)
             tip.hide();
         })
+        .on("click", handleClick)
         .call(tip);
 
 

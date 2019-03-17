@@ -39,14 +39,18 @@ input[type="submit"] {
 }
 
 body {
-    background: rgba(221, 221, 221, 0.8);
+    background: lightblue;
 }
 
+svg {
+    background: white;
+}
 .main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .title {
@@ -142,4 +146,21 @@ circle {
 	border-top-color: white;
 	border-width: 19px;
 	margin-left: -19px;
+}
+
+.info {
+    background: black;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+}
+
+.modal {
+  position: absolute;
+  left: 50px;
+  background: black;
+    height: 100px;
+    width: 100px;
+  display: flex;
+  z-index: 10;
 }
