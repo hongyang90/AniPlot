@@ -160,11 +160,10 @@ circle {
     border-radius: 50%;
     font-size: 20px;
     color: white;
-
 }
 
 .info a {
-    color: blue;
+    color: black;
     font-size: 16px;
     text-decoration: underline;
 }
@@ -177,7 +176,7 @@ circle {
   display: flex;
   z-index: 10;
 } */
-.infoimg {
+.info img {
     height: 294px;
     width: 200px;
     margin-top: -40px;
@@ -198,14 +197,19 @@ circle {
 .firstsub {
     display: flex;
     justify-content: center;
-    width: 225px;
-
+    width: 350px;
+    margin-bottom: 5px;
 }
 
 .type, .episodes {
     text-align: center;
+    margin: auto;
 }
 
 .secondsub {
+    margin: 5px;
+}
 
+.infoscore {
+    margin: 5px;
 }

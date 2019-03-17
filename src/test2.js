@@ -97,27 +97,25 @@ export const render2 = (dataset) => {
             <div class='infotitle'>${d.title}</div>
             <div class="firstsub">
                 <div class="type">
-                    Anime Type: ${d.type}
+                    Anime Type:  ${d.type}
                 </div>
                 <div class="episodes">
-                Episodes: ${d.episodes}
+                Episodes:  ${d.episodes}
                 </div>
+            </div>
+            <div class="secondsub">
+                <div class="startdate">
+                    Airing Time: ${d.start_date} - ${d.end_date}
+                </div>
+              
             </div>
             <div class="inforank">Popularity Rank: ${d.rank}</div>
             <div class="infoscore">Rating: ${d.score}</div>
-            <div class="secondsub">
-                <div class="startdate">
-                    Start Date: ${d.start_date}
-                </div>
-                <div class="enddate">
-                End Date:  ${d.end_date}
-                </div>
-            </div>
             <a href=${d.url}>More About This Show</a>
 
         
       `).style("background", () => {
-          return "hsl(" + Math.random() * 360 + ",100%,40%)";
+          return "hsl(" + Math.random() * 360 + ",100%,45%)";
       })
         
     }
