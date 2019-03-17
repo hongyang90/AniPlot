@@ -116,13 +116,14 @@ export const render2 = (dataset) => {
         
       `).style("background", () => {
           return "hsl(" + Math.random() * 360 + ",100%,45%)";
-      })
+      });
         
-    }
+    };
 
     g.selectAll('circle')
         .data(dataset)
         .enter().append('circle')
+        .attr('class', 'node')
         .attr('cy', d => yScale(yValue(d)))
         .attr('cx', d => xScale(xValue(d)))
         .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) })
@@ -137,7 +138,7 @@ export const render2 = (dataset) => {
         })
         .on('mouseout', function (d) {
             select(this).style('opacity', 0.6);
-            d3.selectAll('circle').style('opacity', 0.6)
+            d3.selectAll('circle').style('opacity', 0.6);
             tip.hide();
         })
         .on("click", handleClick)
@@ -145,6 +146,36 @@ export const render2 = (dataset) => {
 
 
 
+    // select('body')
+    //     .on('click', (e) => {
+    //         console.log(e)
+    //         if (e.target === 'circle') {
+    //             d3.selectAll('circle')
+    //                 .style('visibility', 'hidden')
+
+    //         } else {
+    //             d3.selectAll('circle')
+    //                 .style('visibility', 'visible');
+    //             select('.info').remove()
+    //         }
+    //     })
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('node')) {
+            d3.selectAll('circle')
+            .style('visibility', 'visible');
+            select('.info').remove()
+            // d3.selectAll('circle')
+            // .style('visibility', 'hidden')
+            
+        }  
+        // else {
+        //     d3.selectAll('circle')
+        //     .style('visibility', 'visible');
+        //     select('.info').remove()
+        // }
+     
+    })
         // TESTING CODE
 
     // g.selectAll('circle')

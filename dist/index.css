@@ -159,7 +159,7 @@ circle {
     align-items: center;
     border-radius: 50%;
     font-size: 20px;
-    color: white;
+    color: black;
 }
 
 .info a {
@@ -183,7 +183,7 @@ circle {
 }
 
 .infotitle {
-    color: white;
+    color: black;
     display: flex;
     justify-content: flex-start;
     margin: 5px;
