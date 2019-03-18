@@ -62,4 +62,32 @@ This feature allows users to click on data points and will display detailed info
 ```
 
 
-###
+### Generating HTML Elements using Data with D3
+
+One main goal of this project was to generate html elements using a given dataset. I was able to acheive this by using D3 methods which allow for data to be binded to a new html element. This allows for dynamic functionality as the tool tips on hover will display info specific to each data point.
+
+```
+  g.selectAll('circle')
+        .data(dataset)
+        .enter().append('circle')
+        .attr('class', 'node')
+        .attr('cy', d => yScale(yValue(d)))
+        .attr('cx', d => xScale(xValue(d)))
+        .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) })
+        .attr("fill", () => {
+            return "hsl(" + Math.random() * 360 + ",100%,40%)";
+        }).attr("opacity", 0.6)
+        .on('mouseover', function (d) {
+            d3.selectAll('circle').style('opacity', 0.25)
+            select(this).style('opacity', 1);
+            tip.show(d, this);
+        })
+        .on('mouseout', function (d) {
+            select(this).style('opacity', 0.5);
+            d3.selectAll('circle').style('opacity', 0.5);
+            tip.hide();
+        })
+        .on("click", handleClick)
+        .call(tip);
+
+```
