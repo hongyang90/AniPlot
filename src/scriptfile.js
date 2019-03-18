@@ -44,7 +44,6 @@ export const render2 = (dataset) => {
 
     const yAxisG = g.append('g').call(yAxis);
 
-    // yAxisG.selectAll('.domain').remove();
 
     yAxisG.append('text')
         .attr('class', 'axis-label')
@@ -58,7 +57,6 @@ export const render2 = (dataset) => {
     const xAxisG = g.append('g').call(xAxis)
         .attr('transform', `translate(0,${innerHeight})`);
 
-    // xAxisG.select('.domain').remove();
 
     xAxisG.append('text')
         .attr('class', 'axis-label')
@@ -134,7 +132,6 @@ export const render2 = (dataset) => {
         .attr('cy', d => yScale(yValue(d)))
         .attr('cx', d => xScale(xValue(d)))
         .attr('r', d => { return rScale((((d.score - 7) / 9.5) * 50)) })
-        // .attr('r', d => { return 3*(((d.score - 7)/9.5)*25 + (1/d.rank)*25)})
         .attr("fill", () => {
             return "hsl(" + Math.random() * 360 + ",100%,40%)";
         }).attr("opacity", 0.6)
@@ -156,17 +153,8 @@ export const render2 = (dataset) => {
         if (!e.target.classList.contains('node')) {
             d3.selectAll('circle')
             .style('visibility', 'visible');
-            select('.info').remove()
-            // d3.selectAll('circle')
-            // .style('visibility', 'hidden')
-            
+            select('.info').remove();
         }  
-        // else {
-        //     d3.selectAll('circle')
-        //     .style('visibility', 'visible');
-        //     select('.info').remove()
-        // }
-     
     })
         // TESTING CODE
 

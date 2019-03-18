@@ -19,5 +19,3 @@ import * as API from './api_util';
     
     
 }
-
-// module.exports.fetchData = fetchData;
