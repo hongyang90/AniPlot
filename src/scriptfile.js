@@ -2,7 +2,8 @@ import {select, scaleLinear, extent, axisBottom, axisLeft, format} from 'd3';
 import d3Tip from 'd3-tip';
 // import {tip} from './tiptool';
 import {getAnimeInfo} from './api_util';
-import {renderBarchart} from './barchart'
+import {renderBarchart} from './barchart';
+import {barchart2} from './barchart2';
 
 export const render2 = async (dataset) => {
     const svg = select('svg')
@@ -124,13 +125,22 @@ export const render2 = async (dataset) => {
         
       `).style("background", () => {
           return "hsl(" + Math.random() * 360 + ",100%,45%)";
-      }).transition().duration(200).delay(2)
+      }).transition().duration(200).delay(2);
 
+        select('.main')
+            .append('svg')
+            .attr('id', 'barchart')
+            .attr('height', '500')
+            .attr('width', '600');
+        
         let scores = await getAnimeInfo(d.mal_id).then(res => res.data);
-        renderBarchart(scores)
+        // renderBarchart(scores)
+        barchart2(scores);
         console.log(scores);
         
     };
+
+
 
     g.selectAll('circle')
         .data(dataset)
@@ -161,6 +171,8 @@ export const render2 = async (dataset) => {
             d3.selectAll('circle')
             .style('visibility', 'visible');
             select('.info').remove();
+            select('#barchart').remove();
+
         }  
     })
         // TESTING CODE

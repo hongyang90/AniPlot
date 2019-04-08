@@ -215,3 +215,13 @@ circle {
     font-size: 14px;
     
 }
+
+line {
+  stroke: gray;
+}
+
+line#limit {
+  stroke: #FED966;
+  stroke-width: 3;
+  stroke-dasharray: 3 6;
+}
