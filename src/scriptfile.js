@@ -1,9 +1,10 @@
 import {select, scaleLinear, extent, axisBottom, axisLeft, format} from 'd3';
 import d3Tip from 'd3-tip';
 // import {tip} from './tiptool';
+import {getAnimeInfo} from './api_util';
+import {renderBarchart} from './barchart'
 
-
-export const render2 = (dataset) => {
+export const render2 = async (dataset) => {
     const svg = select('svg')
       
 
@@ -89,7 +90,9 @@ export const render2 = (dataset) => {
 
 
 
-    const handleClick = (d) => {
+    const handleClick = async (d) => {
+      
+
         tip.hide();
         d3.selectAll('circle')
             .style('visibility', 'hidden');
@@ -122,6 +125,10 @@ export const render2 = (dataset) => {
       `).style("background", () => {
           return "hsl(" + Math.random() * 360 + ",100%,45%)";
       }).transition().duration(200).delay(2)
+
+        let scores = await getAnimeInfo(d.mal_id).then(res => res.data);
+        renderBarchart(scores)
+        console.log(scores);
         
     };
 

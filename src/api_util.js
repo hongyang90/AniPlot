@@ -9,3 +9,10 @@ export const getTopAnime = (id) => (
 
 
 
+export const getAnimeInfo = (id) => (
+    axios({
+        url: `anime/${id}`,
+        method: 'get'
+    })
+);
+

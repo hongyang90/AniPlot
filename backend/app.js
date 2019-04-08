@@ -30,13 +30,13 @@ app.get('/top/:page', (req, response) => {
 });
 
 app.get('/anime/:id', (req, response) => {
-    fetch(`https://api.jikan.moe/v3/anime/${req.params.id}/stats`)
+    fetch(`https://api.jikan.moe/v3/anime/${req.params.id}/stats/`)
         .then((response) => {
             return response.text();
         }).then((body) => {
             let results = JSON.parse(body);
-            // console.log(results);
-            response.send(results);
+            // console.log(results.scores);
+            response.send(results.scores);
         });
 });
 
