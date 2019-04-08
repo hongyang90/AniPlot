@@ -95,10 +95,16 @@ export const render2 = async (dataset) => {
       
 
         tip.hide();
-        d3.selectAll('circle')
-            .style('visibility', 'hidden');
+        // d3.selectAll('circle')
+        //     .style('visibility', 'hidden');
+        d3.selectAll('.scatter')
+            .style('display', 'none');
             
        select('.main')
+        .append('div')
+        .attr('class', 'subinfo')
+
+        select('.subinfo')
         .append('div')
         .attr('class', 'info')
         .style('display', 'flex')
@@ -127,7 +133,7 @@ export const render2 = async (dataset) => {
           return "hsl(" + Math.random() * 360 + ",100%,45%)";
       }).transition().duration(200).delay(2);
 
-        select('.main')
+        select('.subinfo')
             .append('svg')
             .attr('id', 'barchart')
             .attr('height', '500')
@@ -168,10 +174,13 @@ export const render2 = async (dataset) => {
 
     document.addEventListener('click', (e) => {
         if (!e.target.classList.contains('node')) {
-            d3.selectAll('circle')
-            .style('visibility', 'visible');
-            select('.info').remove();
-            select('#barchart').remove();
+            // d3.selectAll('circle')
+            // .style('visibility', 'visible');
+            d3.selectAll('.scatter')
+                .style('display', 'block');
+            select('.subinfo').remove();
+            // select('.info').remove();
+            // select('#barchart').remove();
 
         }  
     })
