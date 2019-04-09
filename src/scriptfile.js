@@ -72,15 +72,6 @@ export const render2 = async (dataset) => {
         .range([15, 50]);
 
 
-    // const legend = svg.append('g')
-    //     .attr('class', 'legend')
-    //     .attr('transform', 'translate(50,30')
-    //     .call(d3.legend)
-
-
-
-
-
     const tip = d3Tip()
         .attr('class', 'tiptool')
         .offset([0, 0])
@@ -102,7 +93,16 @@ export const render2 = async (dataset) => {
             
        select('.main')
         .append('div')
-        .attr('class', 'subinfo')
+        .attr('class', 'subinfo');
+       select('.main')
+        .append('div')
+        .attr('class', 'clickout');
+
+        select('.clickout')
+        .append('div')
+        .html('<p>Click anywhere to return to plot </p>');
+
+        
 
         select('.subinfo')
         .append('div')
@@ -142,7 +142,7 @@ export const render2 = async (dataset) => {
         let scores = await getAnimeInfo(d.mal_id).then(res => res.data);
         // renderBarchart(scores)
         barchart2(scores);
-        console.log(scores);
+        // console.log(scores);
         
     };
 
@@ -179,6 +179,7 @@ export const render2 = async (dataset) => {
             d3.selectAll('.scatter')
                 .style('display', 'block');
             select('.subinfo').remove();
+            select('.clickout').remove();
             // select('.info').remove();
             // select('#barchart').remove();
 

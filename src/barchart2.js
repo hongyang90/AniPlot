@@ -10,7 +10,7 @@ export const barchart2 = (scores) => {
         values[idx].score = parseInt(el);
     });
 
-    console.log(values);
+    // console.log(values);
 
     const margin = 60;
     const width = +svg.attr('width') - 2 * margin;
@@ -38,12 +38,12 @@ export const barchart2 = (scores) => {
         .call(d3.axisBottom(xScale));
 
     
-    const barGroups = chart.selectAll()
+    const bars = chart.selectAll()
         .data(values)
         .enter()
         .append('g');
 
-    barGroups
+    bars
         .append('rect')
         .attr('class', 'bar')
         .attr('x', (g) => xScale(g.score))
@@ -70,7 +70,7 @@ export const barchart2 = (scores) => {
                 .attr('x2', width)
                 .attr('y2', y)
 
-            barGroups.append('text')
+            bars.append('text')
                 .attr('class', 'divergence')
                 .attr('x', (a) => xScale(a.score) + xScale.bandwidth() / 2)
                 .attr('y', (a) => yScale(a.percentage) - 10)
@@ -100,21 +100,7 @@ export const barchart2 = (scores) => {
 
             chart.selectAll('#limit').remove()
             chart.selectAll('.divergence').remove()
-        })
-
-    
-    // chart.selectAll()
-    //     .data(values)
-    //     .enter()
-    //     .append('rect')
-    //     .attr('x', (s) => xScale(s.score))
-    //     .attr('y', (s) => yScale(s.percentage))
-    //     .attr('height', (s) => height - yScale(s.percentage))
-    //     .attr('width', xScale.bandwidth());
-
-
-
-
+        });
 
 
     svg.append('text')
@@ -134,7 +120,7 @@ export const barchart2 = (scores) => {
     svg.append('text')
         .attr('class', 'title')
         .attr('x', width / 2 + margin)
-        .attr('y', 40)
+        .attr('y', 30)
         .attr('text-anchor', 'middle')
         .text('Show Rating Breakdown by Percentage');
 
