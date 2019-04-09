@@ -73,8 +73,8 @@ export const barchart2 = (scores) => {
             barGroups.append('text')
                 .attr('class', 'divergence')
                 .attr('x', (a) => xScale(a.score) + xScale.bandwidth() / 2)
-                .attr('y', (a) => yScale(a.percentage) + 20)
-                .attr('fill', 'white')
+                .attr('y', (a) => yScale(a.percentage) - 10)
+                .attr('fill', 'black')
                 .attr('text-anchor', 'middle')
                 .text((a, idx) => {
                     const divergence = (a.percentage - actual.percentage).toFixed(1)
@@ -122,7 +122,7 @@ export const barchart2 = (scores) => {
         .attr('y', margin / 2.7)
         .attr('transform', 'rotate(-90)')
         .attr('text-anchor', 'middle')
-        .text('Percentage of total votes');
+        .text('Percentage of Viewer Votes');
 
 
     svg.append('text')

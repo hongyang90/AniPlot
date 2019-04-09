@@ -130,14 +130,14 @@ export const render2 = async (dataset) => {
 
         
       `).style("background", () => {
-          return "hsl(" + Math.random() * 360 + ",100%,45%)";
+          return "hsl(" + Math.random() * 360 + ",100%,40%)";
       }).transition().duration(200).delay(2);
 
         select('.subinfo')
             .append('svg')
             .attr('id', 'barchart')
             .attr('height', '500')
-            .attr('width', '600');
+            .attr('width', '650');
         
         let scores = await getAnimeInfo(d.mal_id).then(res => res.data);
         // renderBarchart(scores)

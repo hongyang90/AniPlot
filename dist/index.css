@@ -91,7 +91,7 @@ svg text {
 }
 
 i:hover {
-color: #FFAA00;
+color: rgb(240, 122, 25);
 }
 
 circle {
@@ -166,6 +166,7 @@ circle {
     border-radius: 50%;
     font-size: 20px;
     color: black;
+    border: 1px solid black;
 }
 
 .info a {
@@ -229,12 +230,24 @@ circle {
     justify-content: space-around;
 }
 
+.bar {
+    fill: rgb(240, 122, 25);
+}
+
+#barchart {
+    border: 5px solid black;
+}
+
+#barchart text {
+    font-size: 16px;
+}
+
 line {
   stroke: gray;
 }
 
 line#limit {
-  stroke: #FED966;
+  stroke: rgb(12, 12, 11);
   stroke-width: 3;
-  stroke-dasharray: 3 6;
+  stroke-dasharray: 4 6;
 }
