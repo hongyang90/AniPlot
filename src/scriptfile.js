@@ -71,6 +71,12 @@ export const render2 = async (dataset) => {
         .domain(extent(dataset, function (d) { return (((d.score - 7) / 9.5) * 50) }))
         .range([15, 50]);
 
+    svg.append('text')
+        .attr('class', 'axis-label')
+        .attr('x', width / 2 - margin.left)
+        .attr('y', 30)
+        .text('Anime Ratings Versus Popularity');
+
 
     const tip = d3Tip()
         .attr('class', 'tiptool')
