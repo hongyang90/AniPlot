@@ -20,6 +20,7 @@ span, article, footer, time, small {
 .footer {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 
 img {
@@ -61,12 +62,12 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 165px;
+    height: 135px;
     color: white;
 }
 
 .titlesub {
-    font-size: 55px;
+    font-size: 60px;
     letter-spacing: 3px;
     margin: 5px;
 }
@@ -74,6 +75,7 @@ svg {
 .title p {
     font-size: 16px;
     width: 100%;
+    text-align: center;
 }
 
 svg text {
@@ -253,4 +255,37 @@ line#limit {
   stroke: rgb(12, 12, 11);
   stroke-width: 3;
   stroke-dasharray: 4 6;
+}
+
+.titlesub {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 1300px;
+}
+
+.titlesub img {
+    width: 200px;
+    height: 160px;
+}
+
+.projectinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    padding: 5px;
+    background: white;
+    letter-spacing: 1px;
+    height: 150px;
+}
+
+.h1{
+    font-size: 20px;
+}
+
+.titlesub .description {
+    font-size: 14px;
+    padding: 3px;
 }
